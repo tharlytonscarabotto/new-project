@@ -19,8 +19,8 @@ const getWeatherData = async(city) => {
     const res = await fetch(apiWeatherURL);
     const data = await res.json()
 
-    return data
-    
+    return data   
+
 }
 
 const showWeatherData = async (city) => {
@@ -34,7 +34,8 @@ const showWeatherData = async (city) => {
     countryFlagElement.setAttribute('src', `https://flagsapi.com/${data.sys.country}/flat/64.png`)
     humidityElement.innerText = data.main.humidity+'%'
     windElement.innerText = parseInt(data.wind.speed) + 'km/h'
-    console.log(data)
+
+    document.getElementById('weather-data').classList.remove('hide')
 }
 
 
@@ -45,4 +46,18 @@ searchButton.addEventListener('click', (event) =>{
     const city = cityInput.value
 
     showWeatherData(city)
+
+    cityInput.value = ''
+})
+
+cityInput.addEventListener('keyup', (event) => {
+    
+    if(event.code === "Enter"){
+        const city = event.target.value
+
+        showWeatherData(city)
+
+        cityInput.value = ''
+    }
+
 })
