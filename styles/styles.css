@@ -84,13 +84,17 @@ body {
     margin: .6rem 0;
 }
 
+#description {
+    text-transform: capitalize;
+}
+
 #details-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#details-container #umidity {
+#details-container #humidity {
     border-right: 1px solid white;
     margin: .6rem;
     padding: .6rem;

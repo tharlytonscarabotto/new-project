@@ -9,7 +9,7 @@ const temperatureElement = document.querySelector('#temperature span')
 const descriptionElement = document.querySelector('#description')
 const weatherIconElement = document.querySelector('#weather-icon')
 const countryFlagElement = document.querySelector('#country-flag')
-const umidityElement = document.querySelector('#umidity span')
+const humidityElement = document.querySelector('#humidity span')
 const windElement = document.querySelector('#wind span')
 
 const getWeatherData = async(city) => {
@@ -30,6 +30,10 @@ const showWeatherData = async (city) => {
     cityElement.innerText = data.name
     temperatureElement.innerText = parseInt(data.main.temp)
     descriptionElement.innerText = data.weather[0].description
+    weatherIconElement.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
+    countryFlagElement.setAttribute('src', `https://flagsapi.com/${data.sys.country}/flat/64.png`)
+    humidityElement.innerText = data.main.humidity+'%'
+    windElement.innerText = parseInt(data.wind.speed) + 'km/h'
     console.log(data)
 }
 
